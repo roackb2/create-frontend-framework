@@ -1,7 +1,4 @@
 import { setup } from './framework'
-import { User } from './src/user'
+import { App } from './src/app'
 
-setup('#app', User({
-  firstName: 'Jay',
-  lastName: 'Liang'
-}))
+setup('#app', App({}))
