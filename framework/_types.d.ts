@@ -10,6 +10,7 @@ export interface ElementType {
 
 
 export interface ComponentOptionType {
+  props: Record<string, any>
   data: Record<string, any>
-  render?: () => VNode
+  render: (props: Record<string, any>) => VNode
 }
