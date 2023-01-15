@@ -26,5 +26,5 @@ export interface ComponentOptionType {
   props?: PropValidatorType
   data?: DataType
   events?: Record<string, EventType>
-  render: (props: PropArgType) => VNode
+  render: (props: PropArgType, data: DataType) => VNode
 }

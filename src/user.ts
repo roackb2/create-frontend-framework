@@ -9,16 +9,17 @@ export const User = defineComponent({
   data: {
     trailingChar: '!'
   },
-  render: function ({ firstName, lastName }) {
+  render: function ({ firstName, lastName }, data) {
+    console.log('data in user', data)
     const handleClick = () => {
-      this.trailingChar = '?'
+      data.trailingChar = '?'
     }
     const element = div({
       onclick: handleClick,
       style: {
         cursor: "pointer"
       }
-    })`Hello, ${firstName} ${lastName}!`
+    })`Hello, ${firstName} ${lastName}${data.trailingChar as string}`
     return element.node
   }
 })
