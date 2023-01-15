@@ -11,7 +11,6 @@ const stringReducer = (args: ElementInterpolationTypes[]) =>
   }
 
 const createElement = (tagName: TagType) => (options: ElementOptionType) => (content: TemplateStringsArray, ...args: ElementInterpolationTypes[]): ElementType => {
-  console.log(args)
   const template = content.reduce(stringReducer(args), '')
 
   const { onclick, style, children } = options
@@ -19,7 +18,6 @@ const createElement = (tagName: TagType) => (options: ElementOptionType) => (con
   const vnodeData = {}
   if (onclick) Object.assign(vnodeData, { on: { click: onclick } })
   if (style) Object.assign(vnodeData, { style })
-  console.log(vnodeData)
 
   if (children) {
     return{

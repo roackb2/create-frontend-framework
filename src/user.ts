@@ -13,8 +13,9 @@ export const User = defineComponent({
     console.log('data in user', data)
     const handleClick = () => {
       data.trailingChar = '?'
+      console.log('data after clicked', data)
     }
-    const element = div({
+    const element = p({
       onclick: handleClick,
       style: {
         cursor: "pointer"
