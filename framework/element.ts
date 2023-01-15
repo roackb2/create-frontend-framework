@@ -1,10 +1,15 @@
-import { type TagType, ComponentType } from './_types'
+import { type TagType, ElementType } from './_types'
+import { h } from 'snabbdom/h'
 
-const createElement = (tagType: TagType) => (content: TemplateStringsArray, ...args: string[]): ComponentType => ({
-  type: tagType,
-  template: content.reduce((res, cur, i) =>
-  res + cur + (args[i] || '')
-, '')
+const createElement = (tagName: TagType) => (content: TemplateStringsArray, ...args: string[]): ElementType => ({
+  type: 'element',
+  node: h(
+    tagName,
+    {},
+    content.reduce((res, cur, i) =>
+      res + cur + (args[i] || '')
+    , '')
+  )
 })
 
 

@@ -1,9 +1,11 @@
-import { type ComponentType } from './_types'
+import * as snabbdom from 'snabbdom'
+import { type ElementType } from './_types'
 
-export const init = (selector: string, component: ComponentType): void => {
+const patch = snabbdom.init([])
+
+export const init = (selector: string, component: ElementType): void => {
   const app = document.querySelector(selector)
-  const node = document.createElement(component.type)
-  const content = document.createTextNode(component.template)
-  node.append(content)
-  app?.append(node)
+  if (!app) return
+
+  patch(app, component.node)
 }

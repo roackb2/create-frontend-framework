@@ -1,6 +1,9 @@
+import { VNode } from "snabbdom/vnode"
+
 export type TagType = 'div' | 'p'
 
-export interface ComponentType {
-  type: TagType,
-  template: string
+
+export interface ElementType {
+  type: 'element',
+  node: VNode
 }
