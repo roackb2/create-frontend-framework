@@ -11,7 +11,7 @@ export const User = defineComponent({
   },
   render: function ({ firstName, lastName }, data) {
     const handleClick = () => {
-      data.trailingChar = '!!!'
+      data.trailingChar += '!'
     }
     return p({
       onclick: handleClick,

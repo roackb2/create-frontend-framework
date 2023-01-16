@@ -15,7 +15,7 @@ export const defineComponent = (options: ComponentOptionType):
       set(obj, prop, value) {
         if (obj[prop as string] !== value) {
           obj[prop as string] = value
-          nextElem = r(props, obj)
+          nextElem = r(props, watchedData)
 
           prevNode = patch(prevNode, nextElem.node)
         }
