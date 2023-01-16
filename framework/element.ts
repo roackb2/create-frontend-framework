@@ -1,6 +1,7 @@
 import { 
   TagType, ElementType, ElementInterpolationTypes, ElementOptionType
 } from './_types'
+import { v4 as uuid } from 'uuid'
 import { h } from 'snabbdom/h'
 
 const stringReducer = (args: ElementInterpolationTypes[]) =>
@@ -14,14 +15,21 @@ const createElement = (tagName: TagType) => (options: ElementOptionType) => (con
   const template = content.reduce(stringReducer(args), '')
 
   const { onclick, style, children } = options
+  const identifier = uuid()
 
-  const vnodeData = {}
+  const vnodeData = {
+    dataset: {
+      ffid: identifier
+    }
+  }
   if (onclick) Object.assign(vnodeData, { on: { click: onclick } })
   if (style) Object.assign(vnodeData, { style })
+
 
   if (children) {
     return{
       tagName,
+      identifier,
       node: h(
         tagName,
         vnodeData,
@@ -32,6 +40,7 @@ const createElement = (tagName: TagType) => (options: ElementOptionType) => (con
 
   return {
     tagName,
+    identifier,
     node: h(
       tagName,
       vnodeData,
@@ -43,3 +52,4 @@ const createElement = (tagName: TagType) => (options: ElementOptionType) => (con
 
 export const div = createElement('div')
 export const p = createElement('p')
+export const span = createElement('span')

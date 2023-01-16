@@ -1,41 +1,34 @@
-import { ElementType } from './_types.d';
+import { ElementType, PropArgType } from './_types.d';
 import { ComponentOptionType } from './_types'
 import { patch } from './patch'
 
-export const defineComponent = (options: ComponentOptionType): (props: Record<string, any>) => ElementType => {
+export const defineComponent = (options: ComponentOptionType):
+  (props: Record<string, any>) => ElementType => {
   // user defines how the template (VNodes) are created with options.data
   // call render function to get the initial VNode and patch
   // create proxies on options.data
   // use proxy setters to detect changes and call patch
-
-
-  function renderer (props) {
-    const r = options.render.bind(this)
-
-    let prevState = { ...options.data }
-    const watchedData = new Proxy(options.data || {}, {
+  return (props: PropArgType): ElementType => {
+    const r = options.render
+    
+    const dataHandler = {
       set(obj, prop, value) {
-        console.log('obj', obj, prop, value)
-        prevState = { ...obj }
-        const prevNode = r(props, prevState)
-        obj[prop as string] = value
-        const nextNode = r(props, obj)
-        console.log('prevNode', prevNode, 'nextNode', nextNode)
+        if (obj[prop as string] !== value) {
+          obj[prop as string] = value
+          nextElem = r(props, obj)
 
-        patch(prevNode, nextNode)
-
-        prevState = { ...obj }
+          prevNode = patch(prevNode, nextElem.node)
+        }
+  
         return true;
       },
-    })
-    console.log('watchedData', watchedData)
-
-    
-    return {
-      tagName: 'div',
-      node: r(props, watchedData)
     }
-  }
+    const watchedData = new Proxy(options.data || {}, dataHandler)
 
-  return renderer.bind(this)
+    let prevElem = r(props, watchedData)
+    let nextElem = prevElem
+    let prevNode = prevElem.node
+
+    return nextElem
+  }
 }

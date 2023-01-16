@@ -1,11 +1,13 @@
 import { type ElementType } from './_types'
 import { patch } from './patch'
 
-let app: Element | null = null
 export const setup = (selector: string, component: ElementType): void => {
-  app = document.querySelector(selector)
+  const app = document.querySelector(selector)
   if (!app) return
 
-  patch(app, component.node)
+  const content = document.createElement('div')
+  app.appendChild(content)
+
+  const initialNode = patch(content, component.node)
 }
 

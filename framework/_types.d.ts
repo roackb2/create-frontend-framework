@@ -1,9 +1,10 @@
 import { VNode } from "snabbdom/vnode"
 
-export type TagType = 'div' | 'p'
+export type TagType = 'div' | 'p' | 'span'
 
 export interface ElementType {
   tagName: TagType
+  identifier: string
   node: VNode
 }
 export type ElementOptionKeyType = 'onclick' | 'style'
@@ -26,5 +27,5 @@ export interface ComponentOptionType {
   props?: PropValidatorType
   data?: DataType
   events?: Record<string, EventType>
-  render: (props: PropArgType, data: DataType) => VNode
+  render: (props: PropArgType, data: DataType) => ElementType
 }

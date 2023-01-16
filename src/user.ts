@@ -10,17 +10,14 @@ export const User = defineComponent({
     trailingChar: '!'
   },
   render: function ({ firstName, lastName }, data) {
-    console.log('data in user', data)
     const handleClick = () => {
-      data.trailingChar = '?'
-      console.log('data after clicked', data)
+      data.trailingChar = '!!!'
     }
-    const element = p({
+    return p({
       onclick: handleClick,
       style: {
         cursor: "pointer"
       }
     })`Hello, ${firstName} ${lastName}${data.trailingChar as string}`
-    return element.node
   }
 })
