@@ -1,6 +1,7 @@
 import { patch } from './patch'
-export { jsx } from '@herp-inc/snabbdom-jsx';
+export { jsx } from '@herp-inc/snabbdom-jsx'
 import type { VNode } from 'snabbdom'
+export { defineComponent } from './component'
 
 export const setup = (selector: string, component: VNode): void => {
   const app = document.querySelector(selector)

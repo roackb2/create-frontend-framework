@@ -1,5 +1,4 @@
-import { defineComponent } from '../framework/component'
-import { jsx } from '../framework'
+import { jsx, defineComponent } from '../framework'
 import { User } from './user'
 
 

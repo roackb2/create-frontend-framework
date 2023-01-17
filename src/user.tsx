@@ -1,5 +1,4 @@
-import { defineComponent } from '../framework/component'
-import { jsx } from '../framework' 
+import { jsx, defineComponent } from '../framework'
 
 export const User = defineComponent({
   props: {
@@ -14,7 +13,7 @@ export const User = defineComponent({
       data.trailingChar += '!'
     }
     return (
-      <div onclick={handleClick}>
+      <div onclick={handleClick} $style={{ cursor: 'pointer' }}>
         Hello, {firstName} {lastName}{data.trailingChar as string}
       </div>
     )
