@@ -1,4 +1,4 @@
-import { VNode } from "snabbdom/vnode"
+import { VNode } from "snabbdom"
 
 export type TagType = 'div' | 'p' | 'span'
 

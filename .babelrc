@@ -1,4 +1,10 @@
 {
   "presets": ["env"],
-  "plugins": ["transform-object-rest-spread"]
+  "plugins": ["transform-object-rest-spread", [
+    "@babel/plugin-transform-react-jsx",
+    {
+      "pragma": "jsx",
+      "pragmaFrag": "Fragment"
+    }
+  ]]
 }

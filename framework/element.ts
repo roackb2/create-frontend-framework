@@ -2,7 +2,7 @@ import {
   TagType, ElementType, ElementInterpolationTypes, ElementOptionType
 } from './_types'
 import { v4 as uuid } from 'uuid'
-import { h } from 'snabbdom/h'
+import { h } from 'snabbdom'
 
 const stringReducer = (args: ElementInterpolationTypes[]) =>
   (res: ElementInterpolationTypes, cur: ElementInterpolationTypes, i: number): string => {

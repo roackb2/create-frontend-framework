@@ -12,14 +12,17 @@
   },
   "dependencies": {
     "parcel-bundler": "^1.12.4",
-    "snabbdom": "^0.7.1",
+    "snabbdom": "^3.5.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-transform-react-jsx": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "@types/uuid": "^9.0.0",
-    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "typescript": "^4.9.4",
     "vuepress": "^0.13.1"
   }
