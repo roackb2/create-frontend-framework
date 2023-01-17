@@ -1,15 +1,18 @@
-import { span } from '../framework/element'
 import { defineComponent } from '../framework/component'
+import { jsx } from '../framework'
 import { User } from './user'
+
 
 export const App = defineComponent({
   data: {},
   render: () => {
-    return span({
-      children: [User({
-        firstName: 'Jay',
-        lastName: 'Liang'
-      })]
-    })``
+    return (
+      <div>
+        <User
+          firstName="Jay"
+          lastName="Liang"
+        />
+      </div>
+    )
   }
 })

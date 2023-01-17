@@ -4,7 +4,7 @@ import {
   propsModule,
   styleModule,
   eventListenersModule,
-} from "snabbdom";
+} from 'snabbdom'
 
 const modules = [
   // Init patch function with chosen modules
